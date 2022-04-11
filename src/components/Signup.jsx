@@ -67,7 +67,7 @@ const Signup = () => {
      onChange={HandleInputs} name="name" placeholder=" enter name"/><br/>
      <input type="text" 
      onChange={HandleInputs} name="email" placeholder="Enter email"/><br/>
-     {/* <input type="number" 
+     <input type="number" 
      onChange={HandleInputs}  name="mobile" placeholder="Enter mobile"/><br/>
       <input type="password" 
       onChange={HandleInputs} name="password" placeholder="Enter password"/><br/>
@@ -80,7 +80,7 @@ const Signup = () => {
        <input type="number" 
        onChange={HandleInputs} name="pincode" placeholder="Enter pincode"/><br/>
        <input type="text" 
-       onChange={HandleInputs} name="country" placeholder="Enter your country"/><br/> */}
+       onChange={HandleInputs} name="country" placeholder="Enter your country"/><br/> 
         <button type="submit" onClick={handleSubmit}>Signup</button><br/>
     </form>
   )

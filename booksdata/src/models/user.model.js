@@ -6,19 +6,19 @@ const userSchema=new mongoose.Schema({
 
     name:{type:"string",required:"true"},
     email:{type:"string",required:"true"},
-    // mobile:{type:String,required:"true"},
-    // password:{type:"string",required:"true"},
-    // cpassword:{type:"string",required:"true"},
+    mobile:{type:String,required:"true"},
+    password:{type:"string",required:"true"},
+    cpassword:{type:"string",required:"true"},
 
-    // city:{type:"string",required:"true"},
-    // pincode:{type:String,required:"true"},
-    // state:{type:"string",required:"true"},
-    // country:{type:"string",required:"true"},
-    // tokens:[
-    //     {
-    //         token:{type:"string",required:"true"}
-    //     }
-    // ]
+    city:{type:"string",required:"true"},
+    pincode:{type:String,required:"true"},
+    state:{type:"string",required:"true"},
+    country:{type:"string",required:"true"},
+    tokens:[
+        {
+            token:{type:"string",required:"true"}
+        }
+    ]
 
 
 
