@@ -48,7 +48,7 @@ const Signup=styled.span`
  text-decoration:none;
 `;
 
-const Books=styled.span`
+const Profile=styled.span`
 margin:5px 20px;
  font-weight:bold;
  color:white;
@@ -90,10 +90,7 @@ console.log(query)
 
        <RightContainer>
       
-          <Link to="">
-   <Books>Books</Books>
-          </Link>
-       
+    
         <Link to="signin">
         <Login>SignIn</Login>
         </Link>
@@ -102,6 +99,13 @@ console.log(query)
              <Signup>SignUp</Signup>
              </Link>
         
+          
+             <Link to="/profile">
+   <Profile>Profile</Profile>
+          </Link>
+       
+
+
        </RightContainer>
     </Container>
     

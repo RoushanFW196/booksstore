@@ -3,6 +3,7 @@ const app=require("./index.js");
 const express = require("express");
 const dotenv=require("dotenv");
 const path=require("path");
+const cors = require("cors")
 dotenv.config({path:path.join(__dirname, './config.env')});
 
 const bookcontroller=require("./controllers/book.controller")
@@ -11,7 +12,8 @@ const port=process.env.PORT;
 
 const connect=require("./configs/db.js");
 app.use(express.json());
-app.use(userController);
+app.use(cors())
+app.use("",userController);
 // app.get("/",userController)
 //app.get("/",bookcontroller)
 

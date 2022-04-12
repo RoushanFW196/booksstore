@@ -30,10 +30,10 @@ const Signup = () => {
         //console.log(user);
         const{name,email,mobile,password,cpassword,city,state,pincode,country}=user;
       
-      const res= await fetch("/register",{
+      let res= await fetch("/register",{
             method: "POST",
             headers: {
-                contentType: "application/json"
+                "content-Type": "application/json"
             },
             body: JSON.stringify( {name,email,mobile,password,cpassword,city,state,pincode,country})
          })
@@ -60,6 +60,13 @@ const Signup = () => {
      }
         
     }
+
+
+
+
+
+
+
 
   return (
     <form  method="POST">

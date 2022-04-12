@@ -5,6 +5,7 @@ const express=require('express');
 const User=require("../models/user.model")
 const router=express.Router();
 
+const authenticate=require('../middleware/authenticate')
 
 router.get("/",(req,res)=>{
     res.send("hello from router controler user")
@@ -13,11 +14,11 @@ router.get("/",(req,res)=>{
 
 router.post("/register",async(req,res)=>{
     console.log(req.body)
-//   const{name,email,mobile,password,cpassword,city,pin,state ,country}=req.body
+  const{name,email,mobile,password,cpassword,city,pincode,state ,country}=req.body
   
-//   if(!name || !email || !mobile || !password || !cpassword || !city || !pincode ||!state|| !country){
-//     return  res.status(404).json({err:"please filled carefully"})
-//   }
+  if(!name || !email || !mobile || !password || !cpassword || !city || !pincode ||!state|| !country){
+    return  res.status(404).json({err:"please filled carefully"})
+  }
 
   try{
 
@@ -30,7 +31,7 @@ router.post("/register",async(req,res)=>{
     return res.status(404).json({err:"password not matching"})
  }else{
 
-const newuser=new User({name,email,mobile,password,cpassword,city,pin,state,country})
+const newuser=new User({name,email,mobile,password,cpassword,city,pincode,state,country})
     
  
 await newuser.save();
@@ -90,7 +91,20 @@ router.post("/signin",async (req,res)=>{
 
 
 
-})
+});
+
+router.get("/profile",authenticate,(req,res)=>{
+
+    //res.send("user authenticated")
+    try{
+
+    
+     res.status(200).send(req.rootuser);
+    }
+    catch(err){
+        res.status(404).json({err:"something went wrong in user controller profile"})
+    }
+});
 
 
 
