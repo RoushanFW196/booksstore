@@ -1,8 +1,10 @@
 
-import React,{useState} from 'react';
+import React,{useState,useContext} from 'react';
 import styled  from "styled-components";
 import {Search} from '@mui/icons-material';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
+import {SearchContext} from "../context/Searchcontext"
+
 const Container=styled.div`
 width: 100%;
 height: 50px;
@@ -59,10 +61,19 @@ margin:5px 20px;
 
 
 const Navbar = () => {
-const[query,setQuery]=useState("")
+   const[querystring,setQuerystring]=useState("");
+
+
+const{query,handlequery}=useContext(SearchContext)
+
+  
+  
+ 
+
 
 const inputevent=(e)=>{
-    setQuery(e.target.value)
+    setQuerystring(e.target.value)
+    handlequery(querystring)
 }
 console.log(query)
 
@@ -113,6 +124,6 @@ console.log(query)
 
 
   )
-}
+};
 
 export default Navbar;

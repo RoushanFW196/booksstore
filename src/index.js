@@ -5,7 +5,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from 'react-router-dom';
 // import {provider as ReduxProvider} from "react-redux";
-// import {BookStore} from "./store/BookStore"
+// import {BookStore} from "./store/BookStore";
+import {SearchContextProvider} from "./context/Searchcontext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -14,7 +15,10 @@ root.render(
     <App/>
   </ReduxProvider> */}
    <BrowserRouter>
-     <App/>
+    <SearchContextProvider>
+      <App/>
+    </SearchContextProvider>
+   
    </BrowserRouter>
   </React.StrictMode>
   

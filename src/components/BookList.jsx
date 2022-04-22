@@ -1,20 +1,33 @@
 
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect,useContext} from 'react';
+
+import {SearchContext} from "../context/Searchcontext";
+import "./booklist.css";
+
+
 
 const BookList = () => {
+  const {query}=useContext(SearchContext)
+  
+  
+  console.log("Query",query)
+
 
  const[books,setBooks]=useState([])
  
  console.log(books)
  
  useEffect(() => {
-   getbooks();
- }, [])
+    setTimeout(() =>{
+      getbooks();
+    },2000)
+ 
+ }, [query])
 
 
 
      const getbooks=()=>{
-     fetch("https://www.googleapis.com/books/v1/volumes?q=robbinsharma&lang=en&key=AIzaSyAPDZC5P_B99sxHCgGvymzBDa5QhwoL0Uw")
+     fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}&lang=en&key=AIzaSyAPDZC5P_B99sxHCgGvymzBDa5QhwoL0Uw`)
      .then((d)=>d.json())
      .then((res)=>setBooks([...res.items]))
      .catch((err)=>console.log(err))
@@ -26,17 +39,16 @@ const BookList = () => {
 
 
   return (
-       <div>
+       <div className="books-container">
        
        {books.map((book)=>{
         
         return(
-            <div>
-            <h1>{book.volumeInfo.title}</h1>
-             <img src={book.volumeInfo.imageLinks.thumbnail}/>
-             {/* <p>{book.volumeInfo.description}</p> */}
-              <p>{book.volumeInfo.authors[0]}</p>
-    
+            <div key={book.id} className="book">
+              <img src={book.volumeInfo.imageLinks.smallThumbnail}/> 
+               <h3> {book.volumeInfo.title}</h3>
+                <p>{book.volumeInfo.subtitle}</p>
+                    
             </div>
         )
 
